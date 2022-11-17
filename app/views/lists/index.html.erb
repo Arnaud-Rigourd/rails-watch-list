@@ -1,0 +1,9 @@
+<h1>Here is your list</h1>
+
+<ul>
+  <% @list.each do |l| %>
+    <li><%= link_to l.name, list_path(l) %> - <%= link_to "Delete list", list_path(l), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></li>
+  <% end %>
+</ul>
+
+<p><%= render "add_btn" %></p>
