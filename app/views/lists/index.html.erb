@@ -32,15 +32,22 @@
   </div> %>
 
   <h1>Here is your list</h1>
+  <%= cl_image_tag("lgcwlebpw3ufuezpvj71",
+      width: 400, height: 300, crop: :fill) %>
+
 </header>
 
 <div class="container">
   <% @list.each do |l| %>
     <div class="list">
-      <%# img %>
+      <% if l.photo.attached? %>
+        <%= cl_image_tag(l.photo.key, alt: "list picture", width: 200) %>
+      <% end %>
       <%= link_to l.name, list_path(l) %> - <%= link_to "Delete list", list_path(l), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
     </div>
   <% end %>
 </div>
 
 <p><%= render "add_btn" %></p>
+
+<% console %>
