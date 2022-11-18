@@ -1,5 +1,11 @@
 <h1><%= @list.name %></h1>
 
+<div class="list-banner">
+  <% if @list.photo.attached? %>
+    <%= image_tag @list.photo.key, alt: "list picture", width: 200 %>
+  <% end %>
+</div>
+
 <% @list.bookmarks.each do |l| %>
   <ul>
     <li>Title: <%= l.movie.title %></li>

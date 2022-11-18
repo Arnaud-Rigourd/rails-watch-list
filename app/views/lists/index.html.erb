@@ -36,7 +36,10 @@
 
 <div class="container">
   <% @list.each do |l| %>
-    <div class="list"><%= link_to l.name, list_path(l) %> - <%= link_to "Delete list", list_path(l), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></div>
+    <div class="list">
+      <%# img %>
+      <%= link_to l.name, list_path(l) %> - <%= link_to "Delete list", list_path(l), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+    </div>
   <% end %>
 </div>
 
