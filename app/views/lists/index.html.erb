@@ -1,53 +1,62 @@
-<header>
-  <%# <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"> %>
-        <%# <%= image_tag "popcorn.png", alt: "popcorn" %>
-      <%# </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<div id="swup" class="transition-leave">
+  <header>
+    <%# <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"> %>
+          <%# <%= image_tag "popcorn.png", alt: "popcorn" %>
+        <%# </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Messages</a>
-            </li>
-            <li class="nav-item dropdown">
-              <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" data-turbo-method="delete" href="#">Log out</a>
-              </div>
-            </li>
-            <!--li class="nav-item"-->
-            <!--/li-->
-        </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Messages</a>
+              </li>
+              <li class="nav-item dropdown">
+                <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" data-turbo-method="delete" href="#">Log out</a>
+                </div>
+              </li>
+              <!--li class="nav-item"-->
+              <!--/li-->
+          </ul>
+        </div>
       </div>
+    </div> %>
+    <div class="banner-img">
+      <%= image_tag 'cinema', alt: "cinema picture" %>
+      <h1>Here is your list</h1>
     </div>
-  </div> %>
+  </header>
 
-  <h1>Here is your list</h1>
-  <%= cl_image_tag("lgcwlebpw3ufuezpvj71",
-      width: 400, height: 300, crop: :fill) %>
-
-</header>
-
-<div class="container">
-  <% @list.each do |l| %>
-    <div class="list">
-      <% if l.photo.attached? %>
-        <%= cl_image_tag(l.photo.key, alt: "list picture", width: 200) %>
+  <main>
+    <div id="add-list" class="add-movie-btn">
+      <%= render "add_btn" %>
+    </div>
+    <div class="container">
+      <% @list.each do |l| %>
+        <div class="list">
+          <% if l.photo.attached? %>
+            <%= cl_image_tag(l.photo.key, alt: "list picture", width: 200) %>
+          <% end %>
+          <div class="list-content">
+            <div class="list-name">
+              <%= link_to l.name, list_path(l) %>
+            </div>
+            <div class="delete-list">
+              <%= link_to "delete", list_path(l), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+            </div>
+          </div>
+        </div>
       <% end %>
-      <%= link_to l.name, list_path(l) %> - <%= link_to "Delete list", list_path(l), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
     </div>
-  <% end %>
+  </main>
 </div>
-
-<p><%= render "add_btn" %></p>
-
-<% console %>

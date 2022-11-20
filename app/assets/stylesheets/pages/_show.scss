@@ -1,0 +1,35 @@
+@import "../config/mixins";
+@import "../config/variables";
+
+* {
+  list-style: none;
+}
+
+header {
+  h1 {
+    color: white;
+    font-size: 48px;
+    z-index: 1;
+  }
+}
+
+.list-banner {
+  width: 100%;
+
+  img {
+    width: 100%;
+  }
+}
+
+main {
+  @include mainLayout
+}
+
+ul {
+  border-radius: 5px;
+  transition: box-shadow 500ms ease;
+
+  &:hover {
+    box-shadow: 5px 0 10px #00000026;
+  }
+}

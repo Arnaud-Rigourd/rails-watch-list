@@ -1,5 +1,8 @@
-<h1>Here's the bookmark page!</h1>
 
-<p><%= render "form_bookmark", bookmark: @bookmark %></p>
-<p><%= render "lists/back_btn" %></p>
-<% console %>
+<div class="form">
+  <h1>Here's the bookmark page!</h1>
+  <%= render "form_bookmark", bookmark: @bookmark %>
+  <div class="back-btn form-btn">
+    <%= render "lists/back_bookmark_btn" %>
+  </div>
+</div>

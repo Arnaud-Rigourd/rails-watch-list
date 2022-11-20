@@ -1,0 +1,11 @@
+@import "../config/mixins";
+
+.form {
+  @include mainLayout;
+  padding: 50px 100px;
+  height: 430px;
+}
+
+.form-btn {
+  margin-top: 40px;
+}

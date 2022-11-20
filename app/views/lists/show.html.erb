@@ -1,25 +1,36 @@
-<h1><%= @list.name %></h1>
+<div id="swup" class="transition-leave">
+  <header>
+    <h1><%= @list.name %></h1>
 
-<div class="list-banner">
-  <% if @list.photo.attached? %>
-    <%= cl_image_tag(@list.photo.key, alt: "list picture", width: 200) %>
-  <% end %>
+    <div class="list-banner">
+      <% if @list.photo.attached? %>
+        <%= cl_image_tag(@list.photo.key, alt: "list picture", width: 200) %>
+      <% end %>
+    </div>
+  </header>
+
+  <main>
+    <div class="my-btns">
+      <span class="back-btn"><%= render "back_btn" %></span>
+      <span class="add-movie-btn"><%= render "bookmark_btn" %></span>
+    </div>
+
+    <div class="my-cards-bookmarks">
+      <% @list.bookmarks.each do |l| %>
+        <ul class="my-card-bookmark">
+          <div class="card-img">
+            <li><%= image_tag l.movie.poster_url, alt: "movie poster", width: 200 %></li>
+          </div>
+          <li class="movie-title"><%= l.movie.title %></li>
+          <li class="overview">Overview: <%= l.movie.overview %></li>
+          <div class="foot-card">
+            <li class="comment">
+              <i class="fa-solid fa-quote-left"></i> <%= l.comment %>
+            </li>
+            <li class="delete-btn"><%= link_to "delete", bookmark_path(l), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></li>
+          </div>
+        </ul>
+      <% end %>
+    </div>
+  </main>
 </div>
-
-<%# @list[0].movies[0].poster_url %>
-
-<% @list.bookmarks.each do |l| %>
-  <ul>
-    <li><%= image_tag l.movie.poster_url, alt: "movie poster", width: 200 %></li>
-    <li><%= l.movie.title %></li>
-    <li>Title: <%= l.movie.title %></li>
-    <li>Overview: <%= l.movie.overview %></li>
-    <li>Comment: <%= l.comment %></li>
-    <li><%= link_to "Delete", bookmark_path(l), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></li>
-  </ul>
-<% end %>
-
-<p><%= render "bookmark_btn" %></p>
-<p><%= render "back_btn" %></p>
-
-<% console %>

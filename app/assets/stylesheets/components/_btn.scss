@@ -1,0 +1,25 @@
+.my-btns {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 10px 50px 10px;
+}
+
+.add-movie-btn {
+  & > a {
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    background-color: #0e9d0e;
+  }
+}
+
+.back-btn {
+  & > a {
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    background-color: #0e0000;
+  }
+}
